@@ -40,6 +40,10 @@ namespace Intuit.QuickBase.Client
                 var deleteRecord = new DeleteRecord(Application.Client.Ticket, Application.Token, Application.Client.AccountDomain, Table.TableId, recordId);
                 deleteRecord.Post();
             }
+            //I'm not sure this is the best way to handle this, but by not clearing this
+            //Errors abound when attempting to perform operations on the same table after records are removed.
+            _recordsToRemove.Clear();
+            
         }
     }
 }
